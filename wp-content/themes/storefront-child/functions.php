@@ -49,9 +49,57 @@ function wooProductCF_save($post_id)
     if (!empty($textField_disponibleEnTienda))
         update_post_meta($post_id, '_cf_disp_en_tienda', esc_attr($textField_disponibleEnTienda));
 }
-
 // Following code Saves  WooCommerce Product Custom Fields
-add_action( 'woocommerce_process_product_meta', 'wooProductCF_save' );
+add_action( 'woocommerce_process_product_meta', 'wooProductCF_save');
+
+function wooProductCF_display(){
+    global $post;
+
+    $product = wc_get_product($post->ID);
+    $cf_woo_title = $product->get_meta('_cf_disp_en_tienda');
+    if ($cf_woo_title) {
+        printf(
+            '<p id="_cf_disp_en_tienda"><strong>Disponible en: </strong>'.$cf_woo_title.'</p>',
+        );
+    }
+}
+add_action('woocommerce_before_add_to_cart_button', 'wooProductCF_display');
+
+
+/**
+ * # En Tienda CF
+ */
+// function cf_enTienda(){
+//     $args = array(
+//         'id' => 'customfield_enTienda',
+//         'label' => __('Add WooCommerce Custom Fields', 'cwoa'),
+//     );
+//     woocommerce_wp_text_input($args);
+// }
+// add_action('woocommerce_product_options_general_product_data', 'cf_enTienda');
+
+// function save_cf_enTienda($post_id){
+//     $product = wc_get_product($post_id);
+//     $cf_woo_title = isset($_POST['customfield_enTienda']) ? $_POST['customfield_enTienda'] : '';
+//     $product->update_meta_data('customfield_enTienda', sanitize_text_field($cf_woo_title));
+//     $product->save();
+// }
+// add_action('woocommerce_process_product_meta', 'save_cf_enTienda');
+
+// function customfield_enTienda_display(){
+//     global $post;
+
+//     $product = wc_get_product($post->ID);
+//     $cf_woo_title = $product->get_meta('customfield_enTienda');
+//     if ($cf_woo_title) {
+//         printf(
+//             '<div><label>%s</label><input type="text" id="cf_enTienda_title" name="cf_enTienda_title" value=""></div>',
+//             esc_html($cf_woo_title)
+//         );
+//     }
+// }
+
+// add_action('woocommerce_before_add_to_cart_button', 'customfield_enTienda_display');
 
 // Disable all stylesheets Woo
 // --> add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
