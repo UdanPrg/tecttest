@@ -8,3 +8,34 @@ Template: storefront
 */  
 
 /* --------------- Theme customization starts here ----------------- */
+
+/* content-single-product */
+
+/* Column izq */
+
+/* Column der */
+.price-addToCart{
+    margin-top: 16px;
+    padding: 0.5em 2em;
+    background-color: #f0f0f0;
+}
+.price-addToCart p.price{
+    font-size: 32px!important;
+    margin: 10px!important;
+    color: #000!important;
+}
+.price-addToCart .quantity{
+    float: none!important;
+}
+.price-addToCart .quantity .qty{
+    background: #fff;
+    padding: 5px;
+    margin-bottom: 14px;
+    border: 1px solid #e3e3e3;
+    border-radius: 3px;
+    box-shadow: none;
+}
+.price-addToCart .single_add_to_cart_button{
+    width: 50%;
+    display: block;
+}
