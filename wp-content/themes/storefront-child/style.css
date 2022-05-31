@@ -8,34 +8,104 @@ Template: storefront
 */  
 
 /* --------------- Theme customization starts here ----------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
 
 /* content-single-product */
-
 /* Column izq */
-
+:root{
+    --bg-gray: #f0f0f0;
+    --light-gray: #e3e3e3;
+    --white: #ffffff;
+    --black: #000000;
+    --orage-action: #f27b13;
+    --xs: 12px;
+    --md: 14px;
+    --lg: 16px;
+    --xxl:32px;
+    --montserrat: 'Montserrat', sans-serif;
+}
+body{
+    font-family: var(--montserrat);
+}
 /* Column der */
 .price-addToCart{
     margin-top: 16px;
     padding: 0.5em 2em;
-    background-color: #f0f0f0;
+    background-color: var(--bg-gray);
 }
 .price-addToCart p.price{
-    font-size: 32px!important;
+    font-size: var(--xxl)!important;
     margin: 10px!important;
-    color: #000!important;
+    font-weight: 500;
+    color: var(--black)!important;
 }
 .price-addToCart .quantity{
     float: none!important;
 }
 .price-addToCart .quantity .qty{
-    background: #fff;
+    background: var(--white);
     padding: 5px;
     margin-bottom: 14px;
-    border: 1px solid #e3e3e3;
+    border: 1px solid var(--light-gray);
     border-radius: 3px;
     box-shadow: none;
 }
 .price-addToCart .single_add_to_cart_button{
     width: 50%;
     display: block;
+}
+
+/* Related products */
+.related.products > h2{
+    text-align: left!important;
+}
+.related.products ul.products{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.related.products ul.products li.product{
+    text-align: left;
+    border: 1px solid var(--bg-gray);
+    padding: 1.5%;
+    margin: 0!important;
+    height: 350px;
+    display: flex;
+    align-items: flex-end;
+    box-sizing: content-box!important;
+    margin-right: 20px!important;
+}
+.related.products ul.products li.product:last-child{
+    margin-right: 0!important;
+}
+.related.products ul.products li.product a.woocommerce-LoopProduct-link:active,
+.related.products ul.products li.product a.woocommerce-LoopProduct-link:focus{
+    outline: none;
+}
+.related.products ul.products li.product a > img{
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+}
+.related.products ul.products .price{
+    margin: 5px;
+    color: var(--orage-action);
+    font-weight: 500;
+}
+.related.products ul.products .price>span.woocommerce-Price-amount.amount{
+    opacity: 1;
+}
+.related.products ul.products .price>del.woocommerce-Price-amount.amount{
+    opacity: 0.6;
+}
+.related.products ul.products .star-rating{
+    margin: 0;
+}
+.related.products ul.products .onsale{
+    position: absolute!important;
+    top: 10px!important;
+    right: 10px!important;
+    background: var(--orage-action)!important;
+    color: var(--white)!important;
+    border: none!important;
 }
