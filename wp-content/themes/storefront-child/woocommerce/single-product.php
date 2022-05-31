@@ -37,7 +37,7 @@ get_header( 'shop' ); ?>
 			<?php wc_get_template_part( 'content', 'single-product' ); ?>
 			<?php
 				// Display the value of custom product text field
-				echo get_post_meta($post->ID, '_cf_disp_en_tienda', true);
+				// echo get_post_meta($post->ID, '_cf_disp_en_tienda', true);
 			?>
 		<?php endwhile; // end of the loop. ?>
 
