@@ -63,43 +63,48 @@ function wooProductCF_display(){
         );
     }
 }
-add_action('woocommerce_before_add_to_cart_button', 'wooProductCF_display');
+add_action('woocommerce_single_product_summary', 'wooProductCF_display', 21);
 
 
 /**
  * # En Tienda CF
  */
-// function cf_enTienda(){
-//     $args = array(
-//         'id' => 'customfield_enTienda',
-//         'label' => __('Add WooCommerce Custom Fields', 'cwoa'),
-//     );
-//     woocommerce_wp_text_input($args);
-// }
-// add_action('woocommerce_product_options_general_product_data', 'cf_enTienda');
+function cf_enTienda(){
+    $args = array(
+        'id' => 'customfield_enTienda',
+        'label' => __('Add WooCommerce Custom Fields', 'cwoa'),
+    );
+    woocommerce_wp_text_input($args);
+}
+add_action('woocommerce_product_options_general_product_data', 'cf_enTienda');
 
-// function save_cf_enTienda($post_id){
-//     $product = wc_get_product($post_id);
-//     $cf_woo_title = isset($_POST['customfield_enTienda']) ? $_POST['customfield_enTienda'] : '';
-//     $product->update_meta_data('customfield_enTienda', sanitize_text_field($cf_woo_title));
-//     $product->save();
-// }
-// add_action('woocommerce_process_product_meta', 'save_cf_enTienda');
+function save_cf_enTienda($post_id){
+    $product = wc_get_product($post_id);
+    $cf_woo_title = isset($_POST['customfield_enTienda']) ? $_POST['customfield_enTienda'] : '';
+    $product->update_meta_data('customfield_enTienda', sanitize_text_field($cf_woo_title));
+    $product->save();
+}
+add_action('woocommerce_process_product_meta', 'save_cf_enTienda');
 
-// function customfield_enTienda_display(){
-//     global $post;
+function customfield_enTienda_display(){
+    global $post;
 
-//     $product = wc_get_product($post->ID);
-//     $cf_woo_title = $product->get_meta('customfield_enTienda');
-//     if ($cf_woo_title) {
-//         printf(
-//             '<div><label>%s</label><input type="text" id="cf_enTienda_title" name="cf_enTienda_title" value=""></div>',
-//             esc_html($cf_woo_title)
-//         );
-//     }
-// }
+    $product = wc_get_product($post->ID);
+    $cf_woo_title = $product->get_meta('customfield_enTienda');
+    if ($cf_woo_title) {
+        printf(
+            '<div><label>%s</label><input type="text" id="cf_enTienda_title" name="cf_enTienda_title" value=""></div>',
+            esc_html($cf_woo_title)
+        );
+    }
+}
 
-// add_action('woocommerce_before_add_to_cart_button', 'customfield_enTienda_display');
+add_action('woocommerce_before_add_to_cart_button', 'customfield_enTienda_display');
 
 // Disable all stylesheets Woo
 // --> add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+
+// function testwc() {
+//     global $woocommerce;
+//     return print_r($woocommerce->get('products/producto/playstation-4/', ['_jsonp' => 'tagDetails']));
+// }

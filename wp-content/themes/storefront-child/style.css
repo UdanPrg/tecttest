@@ -10,8 +10,6 @@ Template: storefront
 /* --------------- Theme customization starts here ----------------- */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap');
 
-/* content-single-product */
-/* Column izq */
 :root{
     --bg-gray: #f0f0f0;
     --light-gray: #e3e3e3;
@@ -27,6 +25,43 @@ Template: storefront
 body{
     font-family: var(--montserrat);
 }
+/* content-single-product */
+/* Main Contain */
+.product-template-default.single.single-product #content .col-full{
+    max-width: 100%!important;
+    width: 100%!important;
+    padding: 0!important;
+}
+.product-template-default.single.single-product #content .col-full .content-product,
+.product-template-default.single.single-product #content .col-full .content-related-products{
+    background-color: var(--white)!important;
+    width: 60%;
+    margin: 0 auto;
+    z-index: 100;
+}
+.product-template-default.single.single-product #content .col-full .woocommerce-tabs{
+    background-color: var(--bg-gray);
+    z-index: 50;
+    
+}
+.product-template-default.single.single-product #content .col-full .woocommerce-tabs .content-tabs{
+    width: 60%;
+    margin: 0 auto;
+    background-color: var(--white);
+    padding: 10px 35px;
+}
+.product-template-default.single.single-product #content .col-full .woocommerce-tabs .content-tabs .tabs.wc-tabs,
+.product-template-default.single.single-product #content .col-full .woocommerce-tabs .content-tabs .woocommerce-Tabs-panel{
+    float: none;
+}
+.woocommerce-tabs ul.tabs li {
+    display: inline-block!important;
+    margin: 0;
+    width: 165px!important;
+    position: relative;
+}
+/* Column izq */
+
 /* Column der */
 .price-addToCart{
     margin-top: 16px;
